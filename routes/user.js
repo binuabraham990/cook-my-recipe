@@ -20,7 +20,8 @@ router.post('/register', function(req, res, next)   {
         email:email,
         password: password,
     }
-    let saved = securityHelper.hashPassword(data);
+    let hash = securityHelper.hashPassword(data);
+    let saved = securityHelper.saveRegistration(data, hash);
     if(saved)   {
         res.redirect('/user/login');
     }   else    {

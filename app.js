@@ -5,6 +5,8 @@ const path = require('path');
 const flash = require('express-flash');
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
+const fileUpload = require("express-fileupload");
+
 
 const mysql = require('mysql');
 const connection = require('./lib/connection');
@@ -25,12 +27,16 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use(fileUpload());
 
 var mainRoutes = require('./routes/main');
 app.use('/', mainRoutes);
 
 var userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
+
+var recipyRoutes = require('./routes/recipy');
+app.use('/recipy', recipyRoutes);
 
 
 app.listen(port, () => console.log(`Express app running on port ${port}!`));

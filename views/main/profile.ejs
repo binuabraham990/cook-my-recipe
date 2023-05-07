@@ -25,35 +25,53 @@
                     </div>
                     <!--.contact-info-->
                     <div class="contact-form scroll-reveal" data-origin="bottom" data-distance="20%">
-                        <form action="/main/profile" method="post">
+                        <form action="<% if(process == 'update'){ %>/main/profile/update<% }else{%>/main/profile/save<% } %>" method="post">
                             <div class="row">
                                 <div class="form-group col-6">
-                                    <input type="text" name="name" placeholder="Name">
+                                    <input 
+                                        type="text" 
+                                        name="name" 
+                                        placeholder="Name" 
+                                        value="<% if(process == 'update'){ %><%= data[0].name %><% } %>"
+                                    >
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="text" name="nickname" placeholder="Nickname">
+                                    <input 
+                                        type="text" 
+                                        name="nickname" 
+                                        placeholder="Nickname"
+                                        value="<% if(process == 'update'){ %><%= data[0].nickname %><% } %>"
+                                    >
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="text" name="designation" placeholder="Designation">
+                                    <input 
+                                        type="text" 
+                                        name="designation" 
+                                        placeholder="Designation"
+                                        value="<% if(process == 'update'){ %><%= data[0].designation %><% } %>"    
+                                    >
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="text" name="country" placeholder="Country">
+                                    <input 
+                                        type="text" 
+                                        name="country" 
+                                        placeholder="Country"
+                                        value="<% if(process == 'update'){ %><%= data[0].country %><% } %>"    
+                                    >
                                 </div>
                                 <div class="form-group col-12">
-                                    <input type="text" name="hobbies" placeholder="Hobbies">
+                                    <input type="text" name="hobbies" placeholder="Hobbies" value="<% if(process == 'update'){ %><%= data[0].hobbies %><% } %>">
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="text" name="youtube" placeholder="Youtube URL">
+                                    <input type="text" name="youtube" placeholder="Youtube URL"  value="<% if(process == 'update'){ %><%= data[0].youtube %><% } %>">
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="text" name="instagram" placeholder="Instagram Profile">
+                                    <input type="text" name="instagram" placeholder="Instagram Profile"  value="<% if(process == 'update'){ %><%= data[0].instagram %><% } %>">
                                 </div>
                                 <div class="form-group col-12">
                                     <input type="submit" class="btn btn-primary col" value="Save">
                                 </div>
                             </div>
-
-
                         </form>
                     </div>
                     <!--.contact-form-->

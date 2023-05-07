@@ -7,6 +7,16 @@ module.exports = {
 
     hashPassword:async function (data) {
         const hash = await bcrypt.hash(data.password, 10);
+        return hash;
+    },
+
+    comparePassword: async function (plaintextPassword, hash) {
+        const result = await bcrypt.compare(plaintextPassword, hash);
+        return result;
+    },
+
+    saveRegistration: async function(data, hash)  {
+
         data.hash = hash;
         data.active = true;
             
@@ -17,10 +27,5 @@ module.exports = {
                 return true;
             }
         });
-    },
-
-    comparePassword: async function (plaintextPassword, hash) {
-        const result = await bcrypt.compare(plaintextPassword, hash);
-        return result;
     }
 }
